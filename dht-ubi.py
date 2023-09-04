@@ -10,13 +10,13 @@ pin = 17
 
 # Create an ApiClient object
 
-api = ApiClient(token='BBFF-2C0oeR0bidezkYwDwHujcaWUdsNyTv')
+api = ApiClient(token='your ubidots token')
 
 # Get a Ubidots Variable
 
 try:
-    temp = api.get_variable("64f59f1db2849f8da49e5572")
-    humid = api.get_variable("64f59f1cb2849fa4f95fcaea")
+    temp = api.get_variable("your variable id")
+    humid = api.get_variable("your variable id")
 
 except ValueError:
     print("It is not possible to obtain the variable")

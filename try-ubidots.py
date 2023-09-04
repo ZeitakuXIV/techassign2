@@ -3,14 +3,14 @@ import requests
 import math
 import random
 
-TOKEN = "BBFF-2C0oeR0bidezkYwDwHujcaWUdsNyTv"  # Put your TOKEN here
+TOKEN = "your ubidots token"  # Put your TOKEN here
 DEVICE_LABEL = "machine"  # Put your device label here 
 VARIABLE_LABEL_1 = "temperature"  # Put your first variable label here
 VARIABLE_LABEL_2 = "humidity"  # Put your second variable label here
-VARIABLE_LABEL_3 = "position"  # Put your second variable label here
 
 
-def build_payload(variable_1, variable_2, variable_3):
+
+def build_payload(variable_1, variable_2):
     # Creates two random values for sending data
     value_1 = random.randint(-10, 50)
     value_2 = random.randint(0, 85)
@@ -21,8 +21,8 @@ def build_payload(variable_1, variable_2, variable_3):
     lng = random.randrange(-83, -87, -1) + \
         random.randrange(1, 1000, 1) / 1000.0
     payload = {variable_1: value_1,
-               variable_2: value_2,
-               variable_3: {"value": 1, "context": {"lat": lat, "lng": lng}}}
+               variable_2: value_2
+               }
 
     return payload
 
@@ -55,7 +55,7 @@ def post_request(payload):
 
 def main():
     payload = build_payload(
-        VARIABLE_LABEL_1, VARIABLE_LABEL_2, VARIABLE_LABEL_3)
+        VARIABLE_LABEL_1, VARIABLE_LABEL_2)
 
     print("[INFO] Attemping to send data")
     post_request(payload)
